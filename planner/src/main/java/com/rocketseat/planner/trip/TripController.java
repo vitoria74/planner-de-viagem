@@ -55,6 +55,8 @@ public class TripController { //lida com solicitações HTTP dos clientes
             rawTrip.setStartsAt(LocalDateTime.parse(payload.starts_at(), DateTimeFormatter.ISO_DATE_TIME));
             rawTrip.setDestination(payload.destination());
 
+            this.repository.save(rawTrip);
+
             return ResponseEntity.ok(rawTrip);
         }
 

@@ -3,6 +3,7 @@ package com.rocketseat.planner.participant;
 import java.util.UUID;
 
 import org.hibernate.annotations.ManyToAny;
+import org.springframework.data.repository.query.parser.Part;
 
 import com.rocketseat.planner.trip.Trip;
 
@@ -43,4 +44,11 @@ public class Participant {
     @ManyToOne //viagem pode ter vários participantes
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip trip;
+
+    public Participant(String email, Trip trip){
+        this.email = email;
+        this.trip = trip;
+        this.isConfirmed = false;
+        this.name = "";
+    }
 }
